@@ -5,9 +5,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
- * Hello world!
+ * 
+ * La nueva funcionalidad que se desea implementar en la clase ContadorPalabras
+ * consiste en agregar una función que permita contabilizar las palabras de un
+ * string que estén separadas por un espacio, la cual toma como input el string
+ * y devolverá la cantidad de palabras.
+ * Para lograr esto, tenemos que tener un contador inicializado en 0 y una flag
+ * inicializada en True, el contador aumenta cuando encuentra una letra y cambia
+ * la flag a false, cuando encuentre un espacio este flag cambiara a true y
+ * podrá volver a contar una nueva palabra.
+ * 
  */
 class ContadorDePalabras {
 
@@ -27,6 +37,37 @@ class ContadorDePalabras {
         }
 
         return contador;
+    }
+
+    /**
+     * 
+     * 
+     * La función contadorVocales recibe una frase como entrada y devuelve un array
+     * de dos enteros. Durante su ejecución, cuenta el número de vocales y
+     * consonantes en la frase, y al final retorna estos conteos en el array
+     * resultante.
+     * 
+     */
+
+    public int[] contadorVocales(String frase) {
+
+        int contadorVocales = 0;
+        int contadorConsonantes = 0;
+        String vocales[] = { "a", "e", "i", "o", "u", "A", "E", "I", "O", "U" };
+
+        for (int index = 0; index < frase.length(); index++) {
+
+            if (Character.isLetter(frase.charAt(index))) {
+                if (Arrays.asList(vocales).contains(String.valueOf(frase.charAt(index)))) {
+                    contadorVocales++;
+                } else {
+                    contadorConsonantes++;
+                }
+            }
+        }
+        int result[] = { contadorConsonantes, contadorVocales };
+
+        return result;
     }
 
     public int ejercicioB(String frase, int min) {
@@ -67,16 +108,15 @@ class ContadorDePalabras {
             FileReader fr = new FileReader(a);
             BufferedReader br = new BufferedReader(fr);
 
-            
             while (br.readLine() != null) {
                 cantLineas++;
             }
-            
+
             result = new String[cantLineas];
-            
+
             fr = new FileReader(a);
             br = new BufferedReader(fr);
-            
+
             String line = "";
             for (int i = 0; i < result.length; i++) {
                 line = br.readLine();
@@ -92,7 +132,7 @@ class ContadorDePalabras {
         return result;
     }
 
-    public int cantPalabras (String[] lineasArchivo) {
+    public int cantPalabras(String[] lineasArchivo) {
 
         int result = 0;
 
@@ -102,8 +142,6 @@ class ContadorDePalabras {
 
         return result;
     }
-
-
 }
 
 class Principal {
@@ -155,12 +193,14 @@ class Principal {
 
         // System.out.println("EJERCICIO 2\n");
 
-        // String p11 = "Si piensas que tu profesor es exigente,... espera a conocer a tu jefe !";
+        // String p11 = "Si piensas que tu profesor es exigente,... espera a conocer a
+        // tu jefe !";
         // System.out.println(p11);
         // System.out.print("Mas de 4 letras: ");
         // System.out.println(c.ejercicioB(p11, 4) + "\n");
 
-        // String p12 = "Si piensas que tu profesor es exigente,... espera a conocer a tu jefe !";
+        // String p12 = "Si piensas que tu profesor es exigente,... espera a conocer a
+        // tu jefe !";
         // System.out.println(p12);
         // System.out.print("Mas de 0 letras: ");
         // System.out.println(c.ejercicioB(p12, 0) + "\n");
@@ -174,6 +214,10 @@ class Principal {
         // System.out.println(p14);
         // System.out.print("Mas de 2 letras: ");
         // System.out.println(c.ejercicioB(p14, 2) + "\n");
+
+        //String v2 = "Si piensas que tu profesor es exigente,... espera a conocer a tu jefe !";
+        //System.out.println(v2);
+        //System.out.println("consonantes: " + c.contadorVocales(v2)[0] + "\n" + "vocales: " + c.contadorVocales(v2)[1]);
 
         System.out.println("EJERCICIO 3\n");
         String[] lineas = c.obtenerLineas("src\\UT1_TA3_ARCHIVO_EJEMPLO.txt");
