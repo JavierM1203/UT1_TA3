@@ -67,16 +67,15 @@ class ContadorDePalabras {
             FileReader fr = new FileReader(a);
             BufferedReader br = new BufferedReader(fr);
 
-            
             while (br.readLine() != null) {
                 cantLineas++;
             }
-            
+
             result = new String[cantLineas];
-            
+
             fr = new FileReader(a);
             br = new BufferedReader(fr);
-            
+
             String line = "";
             for (int i = 0; i < result.length; i++) {
                 line = br.readLine();
@@ -85,14 +84,16 @@ class ContadorDePalabras {
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            // e.printStackTrace();
+            System.out.println("Archivo no encontrado");
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            System.out.println("No se pudo leer archivo");
         }
         return result;
     }
 
-    public int cantPalabras (String[] lineasArchivo) {
+    public int cantPalabras(String[] lineasArchivo) {
 
         int result = 0;
 
@@ -102,7 +103,6 @@ class ContadorDePalabras {
 
         return result;
     }
-
 
 }
 
@@ -155,12 +155,14 @@ class Principal {
 
         // System.out.println("EJERCICIO 2\n");
 
-        // String p11 = "Si piensas que tu profesor es exigente,... espera a conocer a tu jefe !";
+        // String p11 = "Si piensas que tu profesor es exigente,... espera a conocer a
+        // tu jefe !";
         // System.out.println(p11);
         // System.out.print("Mas de 4 letras: ");
         // System.out.println(c.ejercicioB(p11, 4) + "\n");
 
-        // String p12 = "Si piensas que tu profesor es exigente,... espera a conocer a tu jefe !";
+        // String p12 = "Si piensas que tu profesor es exigente,... espera a conocer a
+        // tu jefe !";
         // System.out.println(p12);
         // System.out.print("Mas de 0 letras: ");
         // System.out.println(c.ejercicioB(p12, 0) + "\n");
@@ -176,7 +178,12 @@ class Principal {
         // System.out.println(c.ejercicioB(p14, 2) + "\n");
 
         System.out.println("EJERCICIO 3\n");
-        String[] lineas = c.obtenerLineas("src\\UT1_TA3_ARCHIVO_EJEMPLO.txt");
+
+        // String ruta = System.console().readLine();
+        // String[] lineas = c.obtenerLineas("src\\UT1_TA3_ARCHIVO_EJEMPLO.txt");
+
+        String[] lineas = c.obtenerLineas(args[0]);
+
         System.out.println(c.cantPalabras(lineas));
 
     }
