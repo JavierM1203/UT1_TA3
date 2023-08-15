@@ -125,9 +125,11 @@ class ContadorDePalabras {
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            // e.printStackTrace();
+            System.out.println("Archivo no encontrado");
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            System.out.println("No se pudo leer archivo");
         }
         return result;
     }
@@ -142,6 +144,7 @@ class ContadorDePalabras {
 
         return result;
     }
+
 }
 
 class Principal {
@@ -220,7 +223,12 @@ class Principal {
         //System.out.println("consonantes: " + c.contadorVocales(v2)[0] + "\n" + "vocales: " + c.contadorVocales(v2)[1]);
 
         System.out.println("EJERCICIO 3\n");
-        String[] lineas = c.obtenerLineas("src\\UT1_TA3_ARCHIVO_EJEMPLO.txt");
+
+        // String ruta = System.console().readLine();
+        // String[] lineas = c.obtenerLineas("src\\UT1_TA3_ARCHIVO_EJEMPLO.txt");
+
+        String[] lineas = c.obtenerLineas(args[0]);
+
         System.out.println(c.cantPalabras(lineas));
 
     }
